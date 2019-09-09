@@ -1,0 +1,49 @@
+//Sharvita Paithankar	
+/*
+The BigO for this this function is f(1)+ f(1)+ f(1)+ f(1)+ f(1)+ f(1)+ f(1)+ f(1)+ f(1)+ f(1) + f(1)= O(11) which is constant. 
+Just adding the element is going to be constant and it is O(3) because 
+O(3) = f(1) + f(1) + f(1)
+*/
+bool LinkedList :: insertAtFront(char value) {
+
+	//creates new node
+	Node *newPtr = new Node();//f(1)
+	newPtr->data = value; //f(1)
+	if (headPtr == NULL) { //f(1)
+		return false;  //f(1)
+	} 
+	//if list is empty 
+	if (headPtr == nullptr)//f(1)
+		headPtr->nextPtr = newPtr; //f(1)
+    //if list is not empty 
+	else if(headPtr != nullptr) //f(1)
+	{
+		Node *tempPtr = headPtr->nextPtr;//f(1)
+ //uses temporary pointer                                                    //to save data 
+		headPtr->nextPtr = newPtr; //f(1)//sets head pointer to new data 
+		newPtr->nextPtr = tempPtr;//f(1)//sets new data pointer to previously saved data 
+	}
+	return true;//f(1)
+}
+
+
+/*
+This function has a BigO of f(1) + f(1) + f(1) + f(1) + f(1) + f(1) +f(1) + f(N) = O(N) where n belongs to the number of elements in the list 
+Just inserting an element at the back has a BigO of O(n)
+*/
+bool LinkedList::insertAtBack(char value) {
+
+	Node *newPtr = new Node(); //f(1)
+	newPtr->data = value; //f(1)
+	
+	Node *currentPtr = headPtr; //f(1)
+	 //goes to last element 
+	while (currentPtr->nextPtr != NULL) { //f(N)
+		currentPtr = currentPtr->nextPtr; //f(1)
+	}
+	currentPtr->nextPtr = newPtr;//f(1) //sets new pointer 
+	newPtr->nextPtr = nullptr;//f(1) // this is apparently necessary because it will set it to random data if its not null
+
+	return true;//f(1)
+
+}
